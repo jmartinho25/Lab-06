@@ -1,7 +1,8 @@
 public class StringCaseChanger implements StringTransformer {
-
+    private String originalText;
     @Override
     public void execute(StringDrink drink) {
+        originalText = drink.getText();
         String text= drink.getText();
         StringBuilder newtext= new StringBuilder();
         for (int i=0;i<text.length();i++){
@@ -17,5 +18,8 @@ public class StringCaseChanger implements StringTransformer {
         }
         drink.setText(newtext.toString());
 
+    }
+    public void undo(StringDrink drink){
+        drink.setText(originalText);
     }
 }
